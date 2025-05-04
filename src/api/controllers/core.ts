@@ -13,7 +13,7 @@ import util from "@/lib/util.ts";
 // 模型名称
 const MODEL_NAME = "jimeng";
 // 默认的AgentID
-const DEFAULT_ASSISTANT_ID = "513695";
+const DEFAULT_ASSISTANT_ID = "513641";
 // 版本号
 const VERSION_CODE = "5.8.0";
 // 平台代码
@@ -32,25 +32,24 @@ const RETRY_DELAY = 5000;
 const FAKE_HEADERS = {
   Accept: "application/json, text/plain, */*",
   "Accept-Encoding": "gzip, deflate, br, zstd",
-  "Accept-language": "zh-CN,zh;q=0.9",
+  "Accept-language": "zh-CN,zh-TW;q=0.9,zh;q=0.8,en-US;q=0.7,en;q=0.6,ja;q=0.5",
   "Cache-control": "no-cache",
   "Last-event-id": "undefined",
   Appid: DEFAULT_ASSISTANT_ID,
   Appvr: VERSION_CODE,
-  Origin: "https://jimeng.jianying.com",
+  Origin: "https://dreamina.capcut.com",
   Pragma: "no-cache",
   Priority: "u=1, i",
-  Referer: "https://jimeng.jianying.com",
+  Referer: "https://dreamina.capcut.com",
   Pf: PLATFORM_CODE,
-  "Sec-Ch-Ua":
-    '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"',
-  "Sec-Ch-Ua-Mobile": "?0",
-  "Sec-Ch-Ua-Platform": '"Windows"',
-  "Sec-Fetch-Dest": "empty",
-  "Sec-Fetch-Mode": "cors",
-  "Sec-Fetch-Site": "same-origin",
-  "User-Agent":
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  'sec-ch-ua': '"Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"',
+  'sec-ch-ua-mobile': '?0',
+  'sec-ch-ua-platform': '"macOS"',
+  'sec-fetch-dest': 'empty',
+  'sec-fetch-mode': 'cors',
+  'sec-fetch-site': 'same-origin',
+  'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36',
+  'x-tt-passport-csrf-token': '720428052c61e6d8b63d9d98851faa3b',
 };
 // 文件最大大小
 const FILE_MAX_SIZE = 100 * 1024 * 1024;
@@ -97,7 +96,7 @@ export async function getCredit(refreshToken: string) {
     data: {},
     headers: {
       // Cookie: 'x-web-secsdk-uid=ef44bd0d-0cf6-448c-b517-fd1b5a7267ba; s_v_web_id=verify_m4b1lhlu_DI8qKRlD_7mJJ_4eqx_9shQ_s8eS2QLAbc4n; passport_csrf_token=86f3619c0c4a9c13f24117f71dc18524; passport_csrf_token_default=86f3619c0c4a9c13f24117f71dc18524; n_mh=9-mIeuD4wZnlYrrOvfzG3MuT6aQmCUtmr8FxV8Kl8xY; sid_guard=a7eb745aec44bb3186dbc2083ea9e1a6%7C1733386629%7C5184000%7CMon%2C+03-Feb-2025+08%3A17%3A09+GMT; uid_tt=59a46c7d3f34bda9588b93590cca2e12; uid_tt_ss=59a46c7d3f34bda9588b93590cca2e12; sid_tt=a7eb745aec44bb3186dbc2083ea9e1a6; sessionid=a7eb745aec44bb3186dbc2083ea9e1a6; sessionid_ss=a7eb745aec44bb3186dbc2083ea9e1a6; is_staff_user=false; sid_ucp_v1=1.0.0-KGRiOGY2ODQyNWU1OTk3NzRhYTE2ZmZhYmFjNjdmYjY3NzRmZGRiZTgKHgjToPCw0cwbEIXDxboGGJ-tHyAMMITDxboGOAhAJhoCaGwiIGE3ZWI3NDVhZWM0NGJiMzE4NmRiYzIwODNlYTllMWE2; ssid_ucp_v1=1.0.0-KGRiOGY2ODQyNWU1OTk3NzRhYTE2ZmZhYmFjNjdmYjY3NzRmZGRiZTgKHgjToPCw0cwbEIXDxboGGJ-tHyAMMITDxboGOAhAJhoCaGwiIGE3ZWI3NDVhZWM0NGJiMzE4NmRiYzIwODNlYTllMWE2; store-region=cn-gd; store-region-src=uid; user_spaces_idc={"7444764277623653426":"lf"}; ttwid=1|cxHJViEev1mfkjntdMziir8SwbU8uPNVSaeh9QpEUs8|1733966961|d8d52f5f56607427691be4ac44253f7870a34d25dd05a01b4d89b8a7c5ea82ad; _tea_web_id=7444838473275573797; fpk1=fa6c6a4d9ba074b90003896f36b6960066521c1faec6a60bdcb69ec8ddf85e8360b4c0704412848ec582b2abca73d57a; odin_tt=efe9dc150207879b88509e651a1c4af4e7ffb4cfcb522425a75bd72fbf894eda570bbf7ffb551c8b1de0aa2bfa0bd1be6c4157411ecdcf4464fcaf8dd6657d66',
-      Referer: "https://jimeng.jianying.com/ai-tool/image/generate",
+      Referer: "https://dreamina.capcut.com/ai-tool/image/generate",
       // "Device-Time": 1733966964,
       // Sign: "f3dbb824b378abea7c03cbb152b3a365"
     }
@@ -123,7 +122,7 @@ export async function receiveCredit(refreshToken: string) {
       time_zone: "Asia/Shanghai"
     },
     headers: {
-      Referer: "https://jimeng.jianying.com/ai-tool/image/generate"
+      Referer: "https://dreamina.capcut.com/ai-tool/image/generate"
     }
   });
   logger.info(`\n今日${receive_quota}积分收取成功\n剩余积分: ${cur_total_credits}`);
@@ -149,9 +148,19 @@ export async function request(
   const sign = util.md5(
     `9e2c|${uri.slice(-7)}|${PLATFORM_CODE}|${VERSION_CODE}|${deviceTime}||11ac`
   );
+
+  // Determine base URL based on URI
+  // ...existing code...
+  // Determine base URL based on URI
+  const baseUrl = uri === '/commerce/v1/benefits/user_credit' 
+    ? 'https://commerce-api-sg.capcut.com'
+    : uri === '/passport/account/info/v2'
+      ? 'https://dreamina.capcut.com'
+      : 'https://mweb-api-sg.capcut.com';
+
   const response = await axios.request({
     method,
-    url: `https://jimeng.jianying.com${uri}`,
+    url: `${baseUrl}${uri}`,
     params: {
       aid: DEFAULT_ASSISTANT_ID,
       device_platform: "web",
@@ -251,6 +260,10 @@ export async function uploadFile(
  */
 export function checkResult(result: AxiosResponse) {
   const { ret, errmsg, data } = result.data;
+  
+  // 添加日志输出
+  logger.debug('API Response:', JSON.stringify(result.data, null, 2));
+  
   if (!_.isFinite(Number(ret))) return result.data;
   if (ret === '0') return data;
   if (ret === '5000')
