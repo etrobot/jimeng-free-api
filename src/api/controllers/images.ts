@@ -39,7 +39,20 @@ export async function generateImages(
   refreshToken: string
 ) {
   const model = getModel(_model);
-  logger.info(`使用模型: ${_model} 映射模型: ${model} ${width}x${height} 精细度: ${sampleStrength}`);
+  
+  // Calculate image ratio based on width and height
+  let image_ratio = 1;
+  if (width === 1584 && height === 1056) {
+    image_ratio = 7;
+  } else {
+    // You can add more specific width/height combinations here
+  }
+
+  // Normalize dimensions to supported sizes
+  let normalizedWidth = width;
+  let normalizedHeight = height;
+  
+  logger.info(`使用模型: ${_model} 映射模型: ${model} ${normalizedWidth}x${normalizedHeight} 精细度: ${sampleStrength} 比例: ${image_ratio}`);
 
   const { totalCredit } = await getCredit(refreshToken);
   if (totalCredit <= 0)
@@ -103,12 +116,12 @@ export async function generateImages(
                     negative_prompt: negativePrompt,
                     seed: Math.floor(Math.random() * 100000000) + 2500000000,
                     sample_strength: sampleStrength,
-                    image_ratio: 1,
+                    image_ratio: image_ratio,
                     large_image_info: {
                       type: "",
                       id: util.uuid(),
-                      height,
-                      width,
+                      height: normalizedHeight,
+                      width: normalizedWidth,
                     },
                   },
                   history_option: {
